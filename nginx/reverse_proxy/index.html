@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+
+<script src="./jquery.js"></script>
+
+<script>
+
+// var url = "http://h5-dudu.com/php/test_proxy.php";
+var proxyUrl = "/php/test/test_proxy.php";
+
+$.ajax(proxyUrl)
+	  .done(function(data) {
+
+	  	console.log(data)
+	  })
+</script>
+</html>

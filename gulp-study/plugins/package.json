@@ -1,0 +1,15 @@
+{
+  "name": "plugins",
+  "version": "1.0.0",
+  "description": "插件的学习",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1"
+  }
+}

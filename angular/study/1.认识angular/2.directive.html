@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app="hellwAngular">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<login-panel></login-panel>
+</body>
+<script src="../lib/angular/angular.js"></script>
+<script>
+    //定义一个模块
+    angular.module('hellwAngular', []);
+    //获取定义的模块
+    //当定义一个控制器之后,就会送个$scope对象
+    angular.module('hellwAngular').controller('helloCtrl', function($scope) {
+        //这是我们的model也是数据
+        var model = {
+            name: 'zfpx'
+        }
+
+        //$scope是我们的vm叫视图模型
+        $scope.name = 'miaozhiuri';
+
+        $scope.add = function(a,b) {
+
+            return a+b;
+        }
+    })
+
+    //组件式指令
+    angular.module('hellwAngular').directive('loginPanel', function() {
+
+        return {
+            //链接函数
+            link: function() {
+
+            },
+            //模板 实现dom元素的转换
+            template:'用户名<input type="text" name="username"><button>登录</button>'
+        }
+    })
+</script>
+</html>

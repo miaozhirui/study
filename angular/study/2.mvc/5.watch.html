@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="zfpxMod">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<div ng-controller="watchCtrl">
+
+<p ng-bind="age"></p>
+<button ng-click="changeVal()">点击改变值</button>
+</div>
+</body>
+<script src="../lib/angular/angular.js"></script>
+<script>
+
+angular.module('zfpxMod', []);
+//控制器定义的时候并不会调用,也不会产生scope实例
+angular.module('zfpxMod').controller('watchCtrl', function($rootScope, $scope) {
+
+//    $scope.name = 11;
+    var age = 1;
+    
+    $scope.changeVal = function() {
+
+        $scope.age = age++;
+    }
+//    document.querySelector('button').addEventListener('click', function() {
+//
+//        $scope.name = age++;
+//    })
+
+
+})
+
+
+
+</script>
+</html>

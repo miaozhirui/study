@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="zfpxMod2">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+
+<!--当得到dom元素的时候,就能够知道相应的scope是谁-->
+<div id="content" ng-controller="zfpxCtrl">
+    {{name}}
+</div>
+</body>
+<script src="../lib/angular/angular.js"></script>
+<script>
+
+    <!--控制器与控制器之间的数据的交互-->
+    angular.module('zfpxMod1', []);
+    angular.module('zfpxMod1').controller('zfpxCtrl', function($scope) {
+
+        $scope.name = 'miaozhirui1';
+    })
+
+    angular.module('zfpxMod2', ['zfpxMod1']);
+
+    angular.module('zfpxMod2').controller('zfpxCtrl', function($scope) {
+
+        $scope.name = 'miaozhirui2'
+    })
+
+
+</script>
+</html>

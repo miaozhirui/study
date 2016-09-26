@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" ng-app="zfpxMod">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<!--事件传递-->
+<div ng-controller="parentCtrl">
+    {{parent}} {{count}}
+    <div ng-controller="childCtrl">
+        {{child}} {{count}}
+        <input type="text" ng-model = 'num'>
+        <!--向上传递事件-->
+        <button ng-click="$emit('add', num)">向上传递</button>
+        <!--向下传递数据-->
+        <button ng-click="$broadcast('add', num)">向下传递</button>
+        <div ng-controller="grandCtrl">
+            {{grand}} {{count}}
+        </div>
+    </div>
+</div>
+</body>
+<script src="../lib/angular/angular.js"></script>
+<script>
+
+<!--控制器与控制器之间的数据的交互-->
+angular.module('zfpxMod', []);
+
+angular.module('zfpxMod').controller('parentCtrl', function($scope) {
+    //控制器里面的监听事件
+    $scope.parent = 'parent';
+    $scope.count =0;
+
+    $scope.$on('add', function(event, num) {
+
+        $scope.count = $scope.count +num;
+    })
+})
+
+angular.module('zfpxMod').controller('childCtrl', function($scope) {
+    $scope.count =0;
+    $scope.child = 'child';
+
+    $scope.$on('add', function(event, num) {
+
+        $scope.count = $scope.count + num;
+    })
+
+    //自定义$emit事件, 把数据向上传递
+    $scope.$emit = function(type) {
+
+        var p ;
+
+        do {
+            p = $scope.$parent;
+        }
+    }
+
+    //自定义broadcast事件, 把数据向下传递
+    $scope.$broadcast = function(type) {
+
+
+    }
+})
+
+angular.module('zfpxMod').controller('grandCtrl', function($scope) {
+
+    $scope.grand = 'grand';
+    $scope.count = 0;
+
+    $scope.$on('add', function(event,num) {
+
+        $scope.count = $scope.count +num;
+    })
+})
+</script>
+</html>

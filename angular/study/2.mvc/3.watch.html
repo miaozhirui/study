@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app="zfpxMod">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body ng-init="isShow=true">
+<div ng-controller="watchCtrl" ng-if="isShow">
+    <!--ng-model把值绑定到scope上面-->
+    <input type="text" ng-model="one">
+    <input type="text" ng-model="two">
+    <input type="text" ng-model="three">
+
+    <p>{{age}}</p>
+    <button ng-click="hide()">按钮</button>
+
+</div>
+</body>
+<script src="../lib/angular/angular.js"></script>
+<script>
+
+angular.module('zfpxMod', []);
+//控制器定义的时候并不会调用,也不会产生scope实例
+angular.module('zfpxMod').controller('watchCtrl', function($rootScope, $scope) {
+
+    $scope.$watch('one', function(newVal, oldVal) {
+
+        $scope.two = newVal;
+    })
+
+    $scope.$watch('two', function(newVal, oldVal) {
+
+        $scope.three = newVal;
+        $scope.one = Math.random();
+    })
+
+
+
+})
+
+
+
+</script>
+</html>

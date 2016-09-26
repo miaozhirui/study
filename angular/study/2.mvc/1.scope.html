@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" ng-app="zfpxMod">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div ng-controller="zfpxCtrl"></div>
+</body>
+<script src="../lib/angular/angular.js"></script>
+<script>
+angular.module('zfpxMod', []);
+//控制器定义的时候并不会调用,也不会产生scope实例
+angular.module('zfpxMod').controller('zfpxCtrl', function($scope) {
+
+    console.log($scope)
+})
+</script>
+</html>

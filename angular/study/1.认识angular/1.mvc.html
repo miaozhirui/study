@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" ng-app="hellwAngular">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div ng-controller="helloCtrl">
+    {{name}}
+    <span>{{add(1,2)}}</span>
+    <span>{{add(4,5)}}</span>
+</div>
+</body>
+<script src="../lib/angular/angular.js"></script>
+<script>
+    //定义一个模块
+    angular.module('hellwAngular', []);
+    //获取定义的模块
+    //当定义一个控制器之后,就会送个$scope对象
+    angular.module('hellwAngular').controller('helloCtrl', function($scope, $http) {
+        //$http其实是对jquery ajax的封装
+        //这是我们的model也是数据
+        var model = {
+            name: 'zfpx'
+        }
+
+        //$scope是我们的vm叫视图模型
+        $scope.name = 'miaozhiuri';
+
+        $scope.add = function(a,b) {
+
+            return a+b;
+        }
+    })
+</script>
+</html>

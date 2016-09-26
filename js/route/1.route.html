@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    ul li{
+        list-style: none;
+        float: left;
+        width:20px;
+        height:20px;
+        border:1px solid red;
+        margin-left:10px;
+        text-align: center;
+        line-height: 20px;
+        cursor: pointer;
+    }
+</style>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+</body>
+
+<script>
+
+    var li = document.querySelectorAll('li');
+
+    window.addEventListener('click', function(e) {
+
+        console.log(history.state);
+        if(e.target.tagName === 'LI') {
+                var webRoute = location.pathname.split('/')[location.pathname.split('/').length-1];
+
+                if(webRoute == e.target.innerText){
+
+                    history.replaceState(null,'el',e.target.innerText)
+
+                    console.log(11)
+                } else {
+
+                    history.pushState(null,'el', e.target.innerText)
+                }
+
+           }
+
+    })
+</script>
+</html>

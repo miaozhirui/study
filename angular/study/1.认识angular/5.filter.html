@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="hellwAngular">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body ng-controller="helloCtrl">
+<span>{{"name" | uppercase}}</span>
+<input type="text" ng-model="name">
+</body>
+<script src="../lib/angular/angular.js"></script>
+<script>
+    //定义一个模块
+    angular.module('hellwAngular', []);
+    //获取定义的模块
+    //当定义一个控制器之后,就会送个$scope对象
+    angular.module('hellwAngular').controller('helloCtrl', function($scope, $timeout) {
+        //这是我们的model也是数据
+        var model = {
+            name: 'zfpx'
+        }
+
+        //$scope是我们的vm叫视图模型
+        $scope.name = 'miaozhiuri';
+
+        $scope.add = function(a,b) {
+
+            return a+b;
+        }
+
+        $timeout(function() {
+
+            $scope.name = 'timeout'
+        },2000)
+    })
+
+
+</script>
+</html>

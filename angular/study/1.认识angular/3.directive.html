@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" ng-app="hellwAngular">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div style="width:100px; height:100px;" zfpx-color>hello</div>
+</body>
+<script src="../lib/angular/angular.js"></script>
+<script>
+    //定义一个模块
+    angular.module('hellwAngular', []);
+    //获取定义的模块
+    //当定义一个控制器之后,就会送个$scope对象
+    angular.module('hellwAngular').controller('helloCtrl', function($scope) {
+        //控制器是用来增强dom的
+        //这是我们的model也是数据
+        var model = {
+            name: 'zfpx'
+        }
+
+        //$scope是我们的vm叫视图模型
+        $scope.name = 'miaozhiuri';
+
+        $scope.add = function(a,b) {
+
+            return a+b;
+        }
+    })
+
+    //装饰性指令,增强性指令(可以用来动态操作样式)
+    angular.module('hellwAngular').directive('zfpxColor', function() {
+
+        return {
+            //链接函数
+            /**
+             *
+             * @param $scope 代表当前的作用域
+             * @param ele 当前要增强的元素(不是元素的dom元素,是jquery对象)
+             * @param attrs 当前元素所有属性的集合
+             * link是唯一的允许操作dom的地方
+                */
+            link: function($scope, ele, attrs) {
+
+                ele.css('color', 'red');
+                ele.on('click', function() {
+
+                    alert(ele.html());
+                })
+            },
+        }
+    })
+</script>
+</html>
